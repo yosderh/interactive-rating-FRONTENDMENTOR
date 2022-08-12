@@ -9,6 +9,7 @@ const createBoxPrincipal = ()=>{ //creacion de el BOX principal
             figure.classList.add('icon-header');
     const starImg = document.createElement('img');
             starImg.src = "./images/icon-star.svg";
+            starImg.alt = "image of the star yellow"
     const question = document.createElement('h1');
             question.classList.add('question');
             question.innerText = `How did we do?`
@@ -70,6 +71,7 @@ function newBox(opcion){ // crea el BOX segundario
     const figura = document.createElement('FIGURE');
     const img = document.createElement('IMG');
     img.src= './images/illustration-thank-you.svg';
+    img.alt= "image tha add phone with a list and card";
     const textSelected = document.createElement('P');
     textSelected.innerText= `You selected ${opcion} out of 5`;
     const divTextSelected = document.createElement('DIV');
