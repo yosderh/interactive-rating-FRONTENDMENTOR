@@ -96,6 +96,7 @@ main{
 
 .list-evaluation{
     display: flex;
+    justify-content: space-around;
     gap: 16px;
 }
 

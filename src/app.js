@@ -2,27 +2,67 @@ const option = document.querySelectorAll('.selection');
 const submit = document.getElementById('submit');
 let contador = 0;
 
- function prueba(item) {
-    const id = option[item].id;
-    const etiqueta = document.getElementById(id);
+const boxPrincipal= document.querySelector('.box-principal');
+const createBoxPrincipal = ()=>{ //creacion de el BOX principal
+    const arr = [1, 2, 3, 4, 5];
+    const figure = document.createElement('figure');
+            figure.classList.add('icon-header');
+    const starImg = document.createElement('img');
+            starImg.src = "./images/icon-star.svg";
+    const question = document.createElement('h1');
+            question.classList.add('question');
+            question.innerText = `How did we do?`
+    const p = document.createElement('p');
+            p.classList.add('parraph');
+            p.innerText= ` Please let us know how we did with your support request. All feedback is appreciated 
+                        to help us improve our offering!`;
+    const ul = document.createElement('ul');
+            ul.classList.add('list-evaluation');
 
-    if(contador===1){
-        const b = document.querySelector('.active');
-        b.classList.remove("active");
-    }
-    etiqueta.classList.add("active");
-    contador=1;
+            arr.forEach(item =>{
+                const li = document.createElement('li');
+                        li.classList.add('icon-header');
+                const span = document.createElement('span');
+                        span.innerText = `${item}`;
+                        li.appendChild(span);
+                        ul.appendChild(li);
 
-    console.log(etiqueta.innerText);
-    
+                        li.addEventListener('click', ()=>{
+                            let as = document.querySelectorAll('li');
+                                as.forEach(num=>{
+                                    if(num.classList.contains('active')){
+                                        num.classList.remove('active');
+                                    }
+                                })
+                            li.classList.add('active');
+                        });
+            });
+
+            const button = document.createElement('button');
+                    button.setAttribute('class','btn-submit');
+                    button.innerText = `Submit`;
+
+                    button.addEventListener('click', ()=>{
+                        let select = document.querySelector('.active');
+                        newBox(select.innerText);
+                    
+                    });
+
+            //agregar al html
+        boxPrincipal.appendChild(figure);
+            figure.appendChild(starImg);
+        boxPrincipal.appendChild(question);
+        boxPrincipal.appendChild(p);
+        boxPrincipal.appendChild(ul);
+        boxPrincipal.appendChild(button);
+
+            
 }
-    function seleccion (){
-        const etiqueta= document.querySelector('.active');
-        return etiqueta.innerText;
-    }
+
+createBoxPrincipal();
 
 
-function newDiv(opcion){
+function newBox(opcion){ // crea el BOX segundario
     const main = document.querySelector('main');
     const secondBox = document.createElement('DIV');
     secondBox.classList.add('box-principal');
@@ -53,4 +93,4 @@ function newDiv(opcion){
         main.appendChild(secondBox);
     }
     
-    submit.onclick =()=> newDiv(seleccion());
+    // newBox(2);
